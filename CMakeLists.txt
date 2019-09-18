@@ -16,13 +16,17 @@ if (LINUX)
             HealthBarAPI.cpp
             HealthBarAPI.h
             HealthBar_Unix.cpp
-            HealthBar.h)
+            HealthBar.h
+            Utils.cpp
+            Utils.h)
 else ()
     add_library(HealthBar STATIC
             HealthBarAPI.cpp
             HealthBarAPI.h
             HealthBar_Win.cpp
-            HealthBar.h)
+            HealthBar.h
+            Utils.cpp
+            Utils.h)
 endif ()
 
 

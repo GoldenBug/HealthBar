@@ -1,8 +1,10 @@
 #if defined(_WIN32) || defined(_WIN64) || defined(__MINGW32__) || defined(__CYGWIN__)
 
 #include <windows.h>
-#include "HealthBar.h"
 #include <iostream>
+
+#include "HealthBar.h"
+#include "Utils.h"
 
 HealthBar *HealthBar::m_pInstance = nullptr;
 
@@ -20,12 +22,10 @@ HealthBar *HealthBar::Instance() {
     return m_pInstance;
 }
 
-void HealthBar::writeStatusBar(int currAmount, int totalAmount, std::string text) {
-
-}
-
 void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::string text) {
-
+    std::string percentString = getPercentPortion(currAmount, totalAmount);
+    std::string percentBar = getPercentBar(currAmount, totalAmount, this->lineWidth - percentString.length());
+    std::cout << percentString << percentBar << '\r' << std::flush;
 }
 
 #endif

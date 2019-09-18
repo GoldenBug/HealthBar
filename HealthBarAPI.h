@@ -3,8 +3,6 @@
 
 #include <string>
 
-void writeStatusBar(int currAmount, int totalAmount, std::string text);
-
 void writeStatusBar(double currAmount, double totalAmount, std::string text);
 
 #endif

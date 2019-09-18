@@ -11,9 +11,6 @@ class HealthBar {
 
 public:
     static HealthBar *Instance();
-
-    void writeStatusBar(int currAmount, int totalAmount, std::string text);
-
     void writeStatusBar(double currAmount, double totalAmount, std::string text);
 
 private:
