@@ -24,13 +24,16 @@ HealthBar *HealthBar::Instance() {
     return m_pInstance;
 }
 
-void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::string text) {
+void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::string &text) {
     HANDLE screenHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     int ret = GetConsoleScreenBufferInfo(screenHandle, &csbi);
 
+    text = "[" + text + "]";
     std::string percentString = getPercentPortion(currAmount, totalAmount);
-    std::string percentBar = getPercentBar(currAmount, totalAmount, this->lineWidth - percentString.length());
+    int percentBarLength = this->lineWidth - (percentString.length() + text.length());
+    std::string percentBar = getPercentBar(currAmount, totalAmount, percentBarLength);
+    std::string completeString = text + percentString + percentBar;
 
     if (ret && this->BarPositionBottom) {
         short newY = this->lineHeight - 1;
@@ -38,14 +41,28 @@ void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::strin
         SetConsoleCursorPosition(screenHandle, pos);
     }
 
-    std::cout << percentString << percentBar << '\r' << std::flush;
+    if (currAmount == totalAmount) {
+        HealthBar::finalizeProgressBar(completeString, csbi.dwCursorPosition.Y);
+    } else {
+        std::cout << completeString << "\r" << std::flush;
+        if (ret && this->BarPositionBottom) {
+            SetConsoleCursorPosition(screenHandle, csbi.dwCursorPosition);
+        }
+    }
+}
+
+void HealthBar::finalizeProgressBar(std::string &progressBar, short startingPosition) {
+    HANDLE screenHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int ret = GetConsoleScreenBufferInfo(screenHandle, &csbi);
 
     if (ret && this->BarPositionBottom) {
-        SetConsoleCursorPosition(screenHandle, csbi.dwCursorPosition);
+        std::cout << std::string(this->lineWidth, ' ') << std::flush;
+        COORD pos = {0, startingPosition};
+        SetConsoleCursorPosition(screenHandle, pos);
     }
 
-    if (currAmount == totalAmount)
-        std::cout << std::endl;
+    std::cout << progressBar << std::endl;
 }
 
 void HealthBar::setBarPositionBottom(bool isBottom) {

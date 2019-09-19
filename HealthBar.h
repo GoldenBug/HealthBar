@@ -11,7 +11,8 @@ class HealthBar {
 
 public:
     static HealthBar *Instance();
-    void writeStatusBar(double currAmount, double totalAmount, std::string text);
+
+    void writeStatusBar(double currAmount, double totalAmount, std::string &text);
 
     void setBarPositionBottom(bool isBottom);
 
@@ -19,6 +20,8 @@ private:
     HealthBar() = default;  // Private so that it can  not be called
     HealthBar(HealthBar const &) {};             // copy constructor is private
     HealthBar &operator=(HealthBar const &) {};  // assignment operator is private
+    void finalizeProgressBar(std::string &progressBar, short startingPosition);
+
     static HealthBar *m_pInstance;
 
     int lineWidth = 0;
