@@ -5,4 +5,6 @@
 
 void writeStatusBar(double currAmount, double totalAmount, std::string text);
 
+void setBarPositionBottom(bool isBottom);
+
 #endif

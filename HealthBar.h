@@ -13,6 +13,8 @@ public:
     static HealthBar *Instance();
     void writeStatusBar(double currAmount, double totalAmount, std::string text);
 
+    void setBarPositionBottom(bool isBottom);
+
 private:
     HealthBar() = default;  // Private so that it can  not be called
     HealthBar(HealthBar const &) {};             // copy constructor is private
@@ -20,6 +22,10 @@ private:
     static HealthBar *m_pInstance;
 
     int lineWidth = 0;
+    int lineHeight = 0;
+    int previousBottomLine = 0;
+
+    bool BarPositionBottom = true;
 };
 
 
