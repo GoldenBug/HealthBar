@@ -3,15 +3,7 @@ project(HealthBar)
 
 set(CMAKE_CXX_STANDARD 14)
 
-if (MINGW)
-    add_library(HealthBar STATIC
-            HealthBarAPI.cpp
-            HealthBarAPI.h
-            HealthBar_Win.cpp
-            HealthBar.h)
-endif (MINGW)
-
-if (LINUX)
+if (UNIX)
     add_library(HealthBar STATIC
             HealthBarAPI.cpp
             HealthBarAPI.h

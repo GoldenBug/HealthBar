@@ -28,7 +28,7 @@ private:
     int lineHeight = 0;
     int previousBottomLine = 0;
 
-    bool BarPositionBottom = true;
+    bool BarPositionBottom = false;
 };
 
 
