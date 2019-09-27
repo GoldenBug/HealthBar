@@ -36,8 +36,7 @@ void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::strin
     std::string completeString = text + percentString + percentBar;
 
     if (ret && this->BarPositionBottom) {
-        short newY = this->lineHeight - 1;
-        COORD pos = {csbi.dwCursorPosition.X, newY};
+        COORD pos = {csbi.dwCursorPosition.X, csbi.srWindow.Bottom};
         SetConsoleCursorPosition(screenHandle, pos);
     }
 
