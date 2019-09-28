@@ -2,7 +2,7 @@
 // Created by Ponto on 9/17/2019.
 //
 
-#include "Utils.h"
+#include "../include/HealthBar/Utils.h"
 #include <cmath>
 
 std::string getPercentPortion(double currAmount, double totalAmount) {

@@ -1,6 +1,6 @@
 
-#include "HealthBar.h"
-#include "Utils.h"
+#include "HealthBar/HealthBar.h"
+#include "HealthBar/Utils.h"
 #include <iostream>
 #include <sys/ioctl.h> // For ioctl, TIOCGWINSZ
 #include <unistd.h> // For STDOUT_FILENO
