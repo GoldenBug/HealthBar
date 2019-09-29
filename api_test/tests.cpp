@@ -1,5 +1,5 @@
 
-#include "HealthBar/HealthBarAPI.h"
+#include "../src/HealthBarAPI.h"
 #include "iostream"
 #include <chrono>
 #include <thread>
@@ -12,7 +12,7 @@ int main() {
         writeStatusBar(num, MAXVALUE, text);
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
         if (num % 20 == 0)
-            std::cout << "test " << num << std::endl;
+            std::cout << "api_test " << num << std::endl;
     }
     for (int num = 0; num <= MAXVALUE; ++num) {
         std::string text = "Testing 2";

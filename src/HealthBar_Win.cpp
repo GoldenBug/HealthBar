@@ -3,8 +3,8 @@
 #include <windows.h>
 #include <iostream>
 
-#include "../include/HealthBar/HealthBar.h"
-#include "../include/HealthBar/Utils.h"
+#include "HealthBar.h"
+#include "Utils.h"
 
 HealthBar *HealthBar::m_pInstance = nullptr;
 
