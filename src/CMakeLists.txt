@@ -127,7 +127,7 @@ if (HEALTHBAR_SHARED OR HEALTHBAR_STATIC)
             DESTINATION ${libdir}/pkgconfig)
 
     install(FILES
-            HealthBarAPI.h.h
+            HealthBarAPI.h
             ${CMAKE_CURRENT_BINARY_DIR}/HealthBar_export.h
             ${CMAKE_CURRENT_BINARY_DIR}/HealthBar_version.h
             DESTINATION include
