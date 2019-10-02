@@ -17,15 +17,7 @@ option(HEALTHBAR_STATIC "Build static libHealthBar library" ON)
 option(HEALTHBAR_SHARED "Build shared libHealthBar library" ON)
 
 add_subdirectory(src)
-
-if (HEALTHBAR_TESTS AND (HEALTHBAR_SHARED OR HEALTHBAR_STATIC))
-    add_subdirectory(api_test)
-endif ()
-
-if (HEALTHBAR_TESTS)
-    enable_testing()
-    add_subdirectory(api_test testdir)
-endif ()
+add_subdirectory(api_test)
 
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING

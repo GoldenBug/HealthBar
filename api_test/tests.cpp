@@ -1,5 +1,5 @@
 
-#include "../src/HealthBarAPI.h"
+#include "HealthBarAPI.h"
 #include "iostream"
 #include <chrono>
 #include <thread>
