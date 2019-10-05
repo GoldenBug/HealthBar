@@ -1,4 +1,4 @@
-#include "HealthBarAPI.h"
+#include "include/HealthBarAPI.h"
 #include "HealthBar.h"
 
 void writeStatusBar(double currAmount, double totalAmount, std::string &text) {

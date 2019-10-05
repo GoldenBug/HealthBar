@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 project(healthbar)
 
 set(SOURCE_FILES
-        HealthBarAPI.h
+        include/HealthBarAPI.h
         HealthBar.h
         Utils.h
         HealthBarAPI.cpp
@@ -10,7 +10,7 @@ set(SOURCE_FILES
         Utils.cpp
         )
 
-add_library(healthbar SHARED STATIC ${SOURCE_FILES})
-
-install(TARGETS healthbar DESTINATION ${HEALTHBAR_INSTALL_LIB_DIR})
-install(FILES HealthBarAPI.h DESTINATION ${HEALTHBAR_INSTALL_INCLUDE_DIR})
+add_library(healthbar STATIC ${SOURCE_FILES})
+target_include_directories(healthbar PUBLIC src/include)
+#install(TARGETS healthbar DESTINATION ${HEALTHBAR_INSTALL_LIB_DIR})
+#install(FILES HealthBarAPI.h DESTINATION ${HEALTHBAR_INSTALL_INCLUDE_DIR})
