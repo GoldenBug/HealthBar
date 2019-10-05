@@ -1,25 +1,18 @@
-cmake_minimum_required(VERSION 3.13)
-project(HealthBar)
+cmake_minimum_required(VERSION 3.2)
 
-if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-    message(FATAL_ERROR "Do not build in-source.\nPlease remove CMakeCache.txt and the CMakeFiles/ directory.\nThen: mkdir build ; cd build ; cmake .. ; make")
-endif ()
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
-set(PROJECT_NAME "HealthBar")
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 
-set(PROJECT_VERSION_MAJOR 1)
-set(PROJECT_VERSION_MINOR 0)
+set(HEALTHBAR_INSTALL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(HEALTHBAR_INSTALL_BIN_DIR ${PROJECT_SOURCE_DIR}/bin)
+set(HEALTHBAR_INSTALL_LIB_DIR ${PROJECT_SOURCE_DIR}/lib)
 
-set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+set(DIVISION_HEADERS_DIR ${PROJECT_SOURCE_DIR}/src/division)
 
-option(HEALTHBAR_TESTS "Build HealthBar tests and enable testing" ON)
-option(HEALTHBAR_STATIC "Build static libHealthBar library" ON)
-option(HEALTHBAR_SHARED "Build shared libHealthBar library" ON)
+include_directories(${HEALTHBAR_INSTALL_INCLUDE_DIR})
+include_directories(${HEALTHBAR_HEADERS_DIR})
 
 add_subdirectory(src)
-add_subdirectory(api_test)
-
-if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release" CACHE STRING
-            "Choose the type of build, options are: Debug Profile Release Asan Ubsan." FORCE)
-endif (NOT CMAKE_BUILD_TYPE)
+add_subdirectory(test)
