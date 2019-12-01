@@ -15,7 +15,7 @@ HealthBar *HealthBar::Instance() {
     return m_pInstance;
 }
 
-void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::string &text) {
+void HealthBar::writeStatusBar(double currAmount, double totalAmount, std::string text) {
 
     struct winsize size;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
